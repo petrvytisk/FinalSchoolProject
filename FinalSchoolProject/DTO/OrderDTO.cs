@@ -1,7 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema; //je tohle potřeba?, j to v magistrech
-
-namespace FinalSchoolProject.Models {
-    public class Order {
+﻿namespace FinalSchoolProject.DTO {
+    public class OrderDTO {
         public int Id { get; set; }
         public DateOnly Accepted { get; set; }
         public DateOnly Deadline { get; set; }
