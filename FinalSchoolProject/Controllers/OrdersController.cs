@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FinalSchoolProject.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FinalSchoolProject.Controllers {
     public class OrdersController : Controller {
+        private OrderService orderService;
+
+        public OrdersController(OrderService orderService) {
+            this.orderService = orderService;
+        }
+
         public IActionResult Index() {
-            return View();
+            var allOrders = orderService.GetAllOrders();
+            return View(allOrders);
         }
     }
 }

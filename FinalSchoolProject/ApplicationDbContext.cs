@@ -1,7 +1,7 @@
 ﻿using FinalSchoolProject.Models;
 using Microsoft.EntityFrameworkCore;
 
-internal class ApplicationDbContext :DbContext {
+public class ApplicationDbContext :DbContext {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
 
     }
