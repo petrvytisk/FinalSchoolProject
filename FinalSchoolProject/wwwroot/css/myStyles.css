@@ -1,0 +1,18 @@
+﻿/*TOTO JSOU MÉ VLASTÍ CSS ÚPRAVY*/
+body {
+
+}
+
+hr {
+    margin: 0.25rem 0rem;
+    color: inherit;
+    background-color: currentColor;
+    border: 0;
+    opacity: 0.25;
+    height:100px;
+}
+
+h5 {
+    color: darkred;
+    font-size: small;
+}
