@@ -22,3 +22,20 @@ gulp.task('watch', function () {
 
 // Defaultní task
 gulp.task('default', gulp.series('sass', 'watch'));
+
+
+
+
+//Možnost dalšího upgradu - plugin Gulpu pro minifikaci css:
+//příkaz: npm install --save-dev gulp-clean-css
+
+//Následující kó použít v tomto souboru
+//const cleanCSS = require('gulp-clean-css');
+
+//gulp.task('sass', function () {
+//    return gulp.src(paths.scss)
+//        .pipe(sass().on('error', sass.logError))
+//        .pipe(cleanCSS()) // Minifikace CSS
+//        .pipe(gulp.dest(paths.css));
+//});
+
