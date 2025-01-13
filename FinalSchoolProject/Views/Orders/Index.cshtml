@@ -1,68 +1,84 @@
 ﻿@using FinalSchoolProject.DTO
 @model IEnumerable<OrderDTO>
-<h2>Přehled všech objednávek</h2>
-@foreach (var item in Model)
-{
-    <div class="row border border-1 border-dark p-2 ">
-        <div class="col-2">
-            <h5>popop</h5>
-            <p>Akdok</p>
+<div>
+    <div class="row">
+        <div class="col-5">
+            <h3>Přehled všech objednávek</h3>
         </div>
         <div class="col-2">
-            <p>Asadas</p>
+            <a class="btn btn-success" asp-action="Create">Create</a>
         </div>
-        <div class="col-2">
-            <p>Aadsasd</p>
-        </div>
-        <div class="col-2">
-            <p>Asasd</p>
-        </div>
-        <div class="col-2">
-            <p>Alplp</p>
-        </div>
-        <div class="col-2">
-            <p>A25655</p>
-        </div>
-        @* <h5>@item.FirstName @item.LastName</h5>
-        Id: @item.Id
-        <p>Date of Birth: @item.DateOfBirth.ToShortDateString()</p>
-        <a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
-        <form style="display:inline" method="post">
-            <input class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id type="submit" value="Delete" />
-        </form> *@
+        <div class="col-3"></div>
     </div>
+</div>
 
-}
-<div class="row pt-2">
+<div class="row">
     <div class="col-1">
-        <h5>ID</h5>
+        <h6>ID</h6>
     </div>
     <div class="col-2">
-        <h5>PŘIJATO</h5>
+        <h6>PŘIJATO</h6>
     </div>
     <div class="col-2">
-        <h5>TERMÍN</h5>
+        <h6>TERMÍN</h6>
     </div>
-    <div class="col-5">
-        <h5>PŘEDMĚT OBJEDNÁVKY</h5>
+    <div class="col-2">
+        <h6>ZBÝVÁ DNŮ</h6>
     </div>
-    <div class="col-1">
-        <h5>CENA</h5>
+    <div class="col-10">
+        <h6>PŘEDMĚT OBJEDNÁVKY</h6>
     </div>
-    <div class="col-1">
-        <h5>ZBÝVÁ DNŮ</h5>
+    <div class="col-3">
+        <h6>CENA</h6>
     </div>
-    
+    <div class="col-2">
+        <h6>DETAIL</h6>
+    </div>
+    <div class="col-2">
+        <h6>SMAZAT</h6>
+    </div>
 </div>
 <hr />
-<div>
-    <a class="btn btn-success" asp-action="Create">Create</a>
-</div>
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-1">
+            <p>@item.Id</p>
+        </div>
+        <div class="col-3">
+            <p>@item.Accepted.ToShortDateString()</p>
+        </div>
+        <div class="col-3">
+            <p>@item.Deadline.ToShortDateString()</p>
+        </div>
+        <div class="col-2">
+            <p>@item.DaysLeft</p>
+        </div>
+        <div class="col-10">
+            <p>@item.Title</p>
+        </div>
+        <div class="col-3">
+            <p>@item.TotalPrice</p>
+        </div>
+        <div class="col-1">
+            <a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Edit</a> @*bude chtít doladit*@
+        </div>
+        <div class="col-1">
+            <form style="display:inline" method="post">
+                @*bude chtít doladit*@
+                <input class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id type="submit" value="Delete" />
+            </form>
+        </div>
+        <hr />
+    </div>
+}
 
 
 
 
-@* @using FinalSchoolProject.DTO
+@*
+    z magistrů:
+@using FinalSchoolProject.DTO
 @model IEnumerable<OrderDTO>
 <h1>List of all orders</h1>
 @foreach (var item in Model)

@@ -31,7 +31,7 @@
             </div>
         </nav>
     </header>
-    <div class="mx-5">
+    <div class="mx-2">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -42,7 +42,7 @@
             &copy; 2024 - FinalSchoolProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script> @* je tohle potřeba? *@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script> @* dle AI u BS verze 5 a výš není potřeba *@
     <script src="~/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
