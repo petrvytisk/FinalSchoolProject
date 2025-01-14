@@ -7,14 +7,17 @@ using System.Reflection; //je tohle potřeba?, je to v magistrech
 namespace FinalSchoolProject.Models {
     public class Order {
         public int Id { get; set; }
-        //[Display(Name = "Přijato")]
+        [Display(Name = "Přijato")]
         public DateOnly Accepted { get; set; }
-        //[DisplayName("Termín")]
+        [Display(Name = "Termín")]
         public DateOnly Deadline { get; set; }
+        [Display(Name = "Zbývá dnů")]
         public int DaysLeft { get; set; }
         public string Status { get; set; } = string.Empty;
         public Customer Customer { get; set; }
+        [Display(Name = "Předmět")]
         public string Title { get; set; } = string.Empty;
+        [Display(Name = "Podrobnosti")]
         public string Description { get; set; } = string.Empty;
         public string Invoice { get; set; } = string.Empty;
         public string PriceOffer { get; set; } = string.Empty;

@@ -4,16 +4,16 @@
 	<h4>Vložit novou objednávku</h4>
 	<form asp-controller="Orders" asp-action="Create">
 		<div>
-			<label asp-for="Customer.CompanyName"></label>		@*SELECT - VIEWBAG*@
+			<label asp-for="Customer.CompanyName">Název společnosti</label>		@*SELECT - VIEWBAG*@
 			<input type="text" asp-for="Title" class="form-control" />
 		</div>
 		<div class="row">
 			<div class="col">
-				<label asp-for="Accepted"></label>
+				<label asp-for="Accepted">Přijato</label>
 				<input type="date" asp-for="Accepted" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="Deadline"></label>
+				<label asp-for="Deadline">Termín</label>
 				<input type="date" asp-for="Deadline" class="form-control" />
 			</div>
 		</div>
@@ -22,31 +22,31 @@
 			<input type="text" asp-for="Status" class="form-control" />
 		</div>
 		<div>
-			<label asp-for="Title"></label>
+			<label asp-for="Title">Předmět</label>
 			<input type="text" asp-for="Title" class="form-control" />
 		</div>
 		<div>
-			<label asp-for="Description"></label>
+			<label asp-for="Description">Podrobnosti</label>
 			<textarea asp-for="Description" class="form-control" id="story" name="story" rows="5" cols="33">
 		It was a dark and stormy night...
 		</textarea>
 		</div>
 		<div class="row">
 			<div class="col">
-				<label asp-for="PriceOffer"></label>
+				<label asp-for="PriceOffer">Cenová nabídka</label>
 				<input type="text" asp-for="PriceOffer" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="DeliveryNote"></label>
+				<label asp-for="DeliveryNote">Dodací list</label>
 				<input type="text" asp-for="DeliveryNote" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="Invoice"></label>
+				<label asp-for="Invoice">Faktura</label>
 				<input type="text" asp-for="Invoice" class="form-control" />
 			</div>
 		</div>
 		<div>
-			<label asp-for="TotalPrice"></label>
+			<label asp-for="TotalPrice">Celková cena</label>
 			<input type="number" asp-for="TotalPrice" class="form-control" />
 		</div>
 		<div>
