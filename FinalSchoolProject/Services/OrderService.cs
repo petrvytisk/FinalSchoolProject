@@ -1,22 +1,28 @@
 ﻿
 using FinalSchoolProject.DTO;
 using FinalSchoolProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalSchoolProject.Services {
     public class OrderService {
-        private ApplicationDbContext dbContext;
+        private ApplicationDbContext _dbContext;
 
         public OrderService(ApplicationDbContext dbContext) {
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
 
         public async Task<IEnumerable<OrderDTO>> GetAllOrdersAsync() {
-            var allOrders = dbContext.Orders;
+            var allOrders = _dbContext.Orders;
             var orderDTOs = new List<OrderDTO>();
             foreach (var order in allOrders) {
                 orderDTOs.Add(modelToDto(order));
             }
             return orderDTOs;
+        }
+
+        public async Task CreateAsync(OrderDTO newOrder) {
+            await _dbContext.Orders.AddAsync(DtoToModel(newOrder));
+            await _dbContext.SaveChangesAsync();
         }
 
         private OrderDTO modelToDto(Order order) {
@@ -33,6 +39,23 @@ namespace FinalSchoolProject.Services {
                 PriceOffer = order.PriceOffer,
                 DeliveryNote = order.DeliveryNote,
                 TotalPrice = order.TotalPrice,
+            };
+        }
+
+        private Order DtoToModel(OrderDTO orderDto) {
+            return new Order() {
+                Id = orderDto.Id,
+                Accepted = orderDto.Accepted,
+                Deadline = orderDto.Deadline,
+                DaysLeft = orderDto.DaysLeft,
+                Status = orderDto.Status,
+                Customer = orderDto.Customer,
+                Title = orderDto.Title,
+                Description = orderDto.Description,
+                Invoice = orderDto.Invoice,
+                PriceOffer = orderDto.PriceOffer,
+                DeliveryNote = orderDto.DeliveryNote,
+                TotalPrice = orderDto.TotalPrice,
             };
         }
     }

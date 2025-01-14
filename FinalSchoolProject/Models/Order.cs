@@ -1,10 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection; //je tohle potřeba?, je to v magistrech
 
 namespace FinalSchoolProject.Models {
     public class Order {
         public int Id { get; set; }
+        //[Display(Name = "Přijato")]
         public DateOnly Accepted { get; set; }
+        //[DisplayName("Termín")]
         public DateOnly Deadline { get; set; }
         public int DaysLeft { get; set; }
         public string Status { get; set; } = string.Empty;

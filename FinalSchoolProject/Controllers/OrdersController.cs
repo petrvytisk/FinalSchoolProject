@@ -1,21 +1,28 @@
-﻿using FinalSchoolProject.Services;
+﻿using FinalSchoolProject.DTO;
+using FinalSchoolProject.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalSchoolProject.Controllers {
     public class OrdersController : Controller {
-        private OrderService orderService;
+        private OrderService _service;
 
         public OrdersController(OrderService orderService) {
-            this.orderService = orderService;
+            this._service = orderService;
         }
 
         public async Task<ActionResult> Index() {
-            var allOrders = await orderService.GetAllOrdersAsync();
+            var allOrders = await _service.GetAllOrdersAsync();
             return View(allOrders);
         }
 
         public IActionResult Create() {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(OrderDTO newOrder) {
+            await _service.CreateAsync(newOrder);
+            return RedirectToAction("Index");
         }
     }
 }
