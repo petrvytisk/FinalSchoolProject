@@ -3,9 +3,15 @@
 <div class="container">
 	<h4>Vložit novou objednávku</h4>
 	<form asp-controller="Orders" asp-action="Create">
-		<div>
-			<label asp-for="Customer.CompanyName">Název společnosti</label>		@*SELECT - VIEWBAG*@
-			<input type="text" asp-for="Title" class="form-control" />
+		<div class="row">
+			<div class="col">
+				<label asp-for="CustomerId">Název společnosti</label>		@*SELECT - VIEWBAG*@
+				<input type="text" asp-for="Title" class="form-control" />
+			</div>
+			<div class="col">
+				<label asp-for="TotalPrice">Celková cena</label>
+				<input type="number" asp-for="TotalPrice" class="form-control" />
+			</div>
 		</div>
 		<div class="row">
 			<div class="col">
@@ -33,22 +39,19 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<label asp-for="PriceOffer">Cenová nabídka</label>
-				<input type="text" asp-for="PriceOffer" class="form-control" />
+				<label asp-for="PriceOfferNum">Cenová nabídka</label>
+				<input type="text" asp-for="PriceOfferNum" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="DeliveryNote">Dodací list</label>
-				<input type="text" asp-for="DeliveryNote" class="form-control" />
+				<label asp-for="DeliveryNoteNum">Dodací list</label>
+				<input type="text" asp-for="DeliveryNoteNum" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="Invoice">Faktura</label>
-				<input type="text" asp-for="Invoice" class="form-control" />
+				<label asp-for="InvoiceNum">Faktura</label>
+				<input type="text" asp-for="InvoiceNum" class="form-control" />
 			</div>
 		</div>
-		<div>
-			<label asp-for="TotalPrice">Celková cena</label>
-			<input type="number" asp-for="TotalPrice" class="form-control" />
-		</div>
+
 		<div>
 			<input class="btn btn-success" type="submit" value="Create" />
 		</div>

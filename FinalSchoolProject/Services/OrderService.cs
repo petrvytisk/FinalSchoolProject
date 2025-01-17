@@ -1,5 +1,4 @@
-﻿
-using FinalSchoolProject.DTO;
+﻿using FinalSchoolProject.DTO;
 using FinalSchoolProject.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +11,7 @@ namespace FinalSchoolProject.Services {
         }
 
         public async Task<IEnumerable<OrderDTO>> GetAllOrdersAsync() {
-            var allOrders = _dbContext.Orders;
+            var allOrders = await _dbContext.Orders.ToListAsync();
             var orderDTOs = new List<OrderDTO>();
             foreach (var order in allOrders) {
                 orderDTOs.Add(modelToDto(order));
@@ -32,12 +31,12 @@ namespace FinalSchoolProject.Services {
                 Deadline = order.Deadline,
                 DaysLeft = order.DaysLeft,
                 Status = order.Status,
-                Customer = order.Customer,
+                CustomerId = order.Customer.Id,
                 Title = order.Title,
                 Description = order.Description,
-                Invoice = order.Invoice,
-                PriceOffer = order.PriceOffer,
-                DeliveryNote = order.DeliveryNote,
+                InvoiceNum = order.InvoiceNum,
+                PriceOfferNum = order.PriceOfferNum,
+                DeliveryNoteNum = order.DeliveryNoteNum,
                 TotalPrice = order.TotalPrice,
             };
         }
@@ -49,12 +48,12 @@ namespace FinalSchoolProject.Services {
                 Deadline = orderDto.Deadline,
                 DaysLeft = orderDto.DaysLeft,
                 Status = orderDto.Status,
-                Customer = orderDto.Customer,
+                //Customer.Id = orderDto.CustomerId, //asi zrušit
                 Title = orderDto.Title,
                 Description = orderDto.Description,
-                Invoice = orderDto.Invoice,
-                PriceOffer = orderDto.PriceOffer,
-                DeliveryNote = orderDto.DeliveryNote,
+                InvoiceNum = orderDto.InvoiceNum,
+                PriceOfferNum = orderDto.PriceOfferNum,
+                DeliveryNoteNum = orderDto.DeliveryNoteNum,
                 TotalPrice = orderDto.TotalPrice,
             };
         }

@@ -10,7 +10,7 @@ namespace FinalSchoolProject.Controllers {
             this._service = orderService;
         }
 
-        public async Task<ActionResult> Index() {
+        public async Task<IActionResult> Index() {
             var allOrders = await _service.GetAllOrdersAsync();
             return View(allOrders);
         }

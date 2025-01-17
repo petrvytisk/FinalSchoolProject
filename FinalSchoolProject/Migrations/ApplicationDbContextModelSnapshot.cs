@@ -41,6 +41,9 @@ namespace FinalSchoolProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("HouseNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -59,7 +62,9 @@ namespace FinalSchoolProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Address");
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("FinalSchoolProject.Models.Customer", b =>
@@ -69,9 +74,6 @@ namespace FinalSchoolProject.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CIN")
                         .IsRequired()
@@ -101,9 +103,7 @@ namespace FinalSchoolProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("FinalSchoolProject.Models.Order", b =>
@@ -126,7 +126,7 @@ namespace FinalSchoolProject.Migrations
                     b.Property<DateOnly>("Deadline")
                         .HasColumnType("date");
 
-                    b.Property<string>("DeliveryNote")
+                    b.Property<string>("DeliveryNoteNum")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -134,11 +134,11 @@ namespace FinalSchoolProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Invoice")
+                    b.Property<string>("InvoiceNum")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PriceOffer")
+                    b.Property<string>("PriceOfferNum")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -160,26 +160,33 @@ namespace FinalSchoolProject.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("FinalSchoolProject.Models.Customer", b =>
-                {
-                    b.HasOne("FinalSchoolProject.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("FinalSchoolProject.Models.Order", b =>
+            modelBuilder.Entity("FinalSchoolProject.Models.Address", b =>
                 {
                     b.HasOne("FinalSchoolProject.Models.Customer", "Customer")
-                        .WithMany()
+                        .WithMany("Addresses")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("FinalSchoolProject.Models.Order", b =>
+                {
+                    b.HasOne("FinalSchoolProject.Models.Customer", "Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("FinalSchoolProject.Models.Customer", b =>
+                {
+                    b.Navigation("Addresses");
+
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

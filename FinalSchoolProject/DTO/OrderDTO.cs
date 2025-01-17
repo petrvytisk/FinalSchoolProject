@@ -1,19 +1,16 @@
-﻿using FinalSchoolProject.Models;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-
-namespace FinalSchoolProject.DTO {
+﻿namespace FinalSchoolProject.DTO {
     public class OrderDTO {
         public int Id { get; set; }
         public DateOnly Accepted { get; set; }
         public DateOnly Deadline { get; set; }
         public int DaysLeft { get; set; }
         public string Status { get; set; } = string.Empty;
-        public Customer Customer { get; set; }
+        public int CustomerId { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public string Invoice { get; set; } = string.Empty;
-        public string PriceOffer { get; set; } = string.Empty;
-        public string DeliveryNote { get; set; } = string.Empty;
+        public string InvoiceNum { get; set; } = string.Empty;
+        public string PriceOfferNum { get; set; } = string.Empty;
+        public string DeliveryNoteNum { get; set; } = string.Empty;
         public double TotalPrice { get; set; }
     }
 }

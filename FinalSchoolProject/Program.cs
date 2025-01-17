@@ -9,6 +9,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseSqlServer(builder.Configuration["ConnectionStrings:ProjectDbConnection"]);
 });
 builder.Services.AddScoped<OrderService>();
+builder.Services.AddScoped<CustomerService>();
 
 var app = builder.Build();
 
@@ -29,6 +30,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Orders}/{action=Index}/{id?}");
+// pattern: "{controller=Home}/{action=Index}/{id?}"); pùvodní
 
 app.Run();
