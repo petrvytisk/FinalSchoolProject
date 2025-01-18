@@ -1,0 +1,68 @@
+﻿@using FinalSchoolProject.ViewModels
+@model CustomerWithAddressVM;
+<div class="container">
+	<h4>Vložit nového zákazníka</h4>
+	<form asp-controller="Customers" asp-action="Create">
+		<div class="col">
+			<label asp-for="CompanyName">Název společnosti:</label>		@*SELECT - VIEWBAG*@
+			<input type="text" asp-for="CompanyName" class="form-control" />
+		</div>
+		<div class="row">
+			<div class="col">
+				<label asp-for="Email">E-mail:</label>
+				<input type="email" asp-for="Email" class="form-control" />
+			</div>
+			<div class="col">
+				<label asp-for="Phone">Tel:</label>
+				<input type="tel" asp-for="Phone" class="form-control" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label asp-for="CIN">IČO:</label>
+				<input type="text" asp-for="CIN" class="form-control" />
+			</div>
+			<div class="col">
+				<label asp-for="TIN">DIČ:</label>
+				<input type="text" asp-for="TIN" class="form-control" />
+			</div>
+		</div>
+		<div>
+			<label asp-for="Street">Ulice:</label>
+			<input type="text" asp-for="Street" class="form-control" />
+		</div>
+		<div class="row">
+			<div class="col">
+				<label asp-for="ApartmentNumber">Číslo popisné:</label>
+				<input type="text" asp-for="ApartmentNumber" class="form-control" />
+			</div>
+			<div class="col">
+				<label asp-for="HouseNumber">Číslo orientační:</label>
+				<input type="text" asp-for="HouseNumber" class="form-control" />
+			</div>
+			<div class="col">
+				<label asp-for="PostalCode">PSČ:</label>
+				<input type="text" asp-for="PostalCode" class="form-control" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label asp-for="City">Město:</label>
+				<input type="text" asp-for="City" class="form-control" />
+			</div>
+			<div class="col">
+				<label asp-for="Country">Stát:</label>
+				<input type="text" asp-for="Country" class="form-control" />
+			</div>
+			<div class="col">
+				<label asp-for="Region">Kraj:</label>
+				<input type="text" asp-for="Region" class="form-control" />
+			</div>
+		</div>
+
+		<div>
+			<input class="btn btn-success" type="submit" value="Create" />
+		</div>
+	</form>
+</div>
+

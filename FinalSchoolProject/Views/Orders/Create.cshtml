@@ -5,49 +5,49 @@
 	<form asp-controller="Orders" asp-action="Create">
 		<div class="row">
 			<div class="col">
-				<label asp-for="CustomerId">Název společnosti</label>		@*SELECT - VIEWBAG*@
+				<label asp-for="CustomerId">Název společnosti:</label>		@*SELECT - VIEWBAG*@
 				<input type="text" asp-for="Title" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="TotalPrice">Celková cena</label>
+				<label asp-for="TotalPrice">Celková cena:</label>
 				<input type="number" asp-for="TotalPrice" class="form-control" />
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<label asp-for="Accepted">Přijato</label>
+				<label asp-for="Accepted">Přijato:</label>
 				<input type="date" asp-for="Accepted" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="Deadline">Termín</label>
+				<label asp-for="Deadline">Termín:</label>
 				<input type="date" asp-for="Deadline" class="form-control" />
 			</div>
 		</div>
 		<div>
-			<label asp-for="Status"></label>		@*SELECT - VIEWBAG*@
+			<label asp-for="Status">Status:</label>		@*SELECT - VIEWBAG*@
 			<input type="text" asp-for="Status" class="form-control" />
 		</div>
 		<div>
-			<label asp-for="Title">Předmět</label>
+			<label asp-for="Title">Předmět:</label>
 			<input type="text" asp-for="Title" class="form-control" />
 		</div>
 		<div>
-			<label asp-for="Description">Podrobnosti</label>
+			<label asp-for="Description">Podrobnosti:</label>
 			<textarea asp-for="Description" class="form-control" id="story" name="story" rows="5" cols="33">
-		It was a dark and stormy night...
+		Zde můžete napsat všechny podrobnosti k objednávce...
 		</textarea>
 		</div>
 		<div class="row">
 			<div class="col">
-				<label asp-for="PriceOfferNum">Cenová nabídka</label>
+				<label asp-for="PriceOfferNum">Cenová nabídka č:</label>
 				<input type="text" asp-for="PriceOfferNum" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="DeliveryNoteNum">Dodací list</label>
+				<label asp-for="DeliveryNoteNum">Dodací list č:</label>
 				<input type="text" asp-for="DeliveryNoteNum" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="InvoiceNum">Faktura</label>
+				<label asp-for="InvoiceNum">Faktura č:</label>
 				<input type="text" asp-for="InvoiceNum" class="form-control" />
 			</div>
 		</div>
