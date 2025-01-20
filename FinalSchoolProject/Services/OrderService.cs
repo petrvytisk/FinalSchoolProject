@@ -1,5 +1,5 @@
-﻿using FinalSchoolProject.DTO;
-using FinalSchoolProject.Models;
+﻿using FinalSchoolProject.Models;
+using FinalSchoolProject.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalSchoolProject.Services {
@@ -9,7 +9,7 @@ namespace FinalSchoolProject.Services {
         public OrderService(ApplicationDbContext dbContext) {
             this._dbContext = dbContext;
         }
-
+        // Metoda načte všechny objednávky a vrátí je ve formě DTO
         public async Task<IEnumerable<OrderDTO>> GetAllOrdersAsync() {
             var allOrders = await _dbContext.Orders.ToListAsync();
             var orderDTOs = new List<OrderDTO>();
@@ -19,11 +19,13 @@ namespace FinalSchoolProject.Services {
             return orderDTOs;
         }
 
+        // Metoda uloží novou objednávku
         public async Task CreateAsync(OrderDTO newOrder) {
             await _dbContext.Orders.AddAsync(DtoToModel(newOrder));
             await _dbContext.SaveChangesAsync();
         }
 
+        // Mapovací metoda MODEL => DTO
         private OrderDTO modelToDto(Order order) {
             return new OrderDTO() {
                 Id = order.Id,
@@ -41,14 +43,14 @@ namespace FinalSchoolProject.Services {
             };
         }
 
+        // Mapovací metoda DTO => MODEL
         private Order DtoToModel(OrderDTO orderDto) {
             return new Order() {
-                Id = orderDto.Id,
                 Accepted = orderDto.Accepted,
                 Deadline = orderDto.Deadline,
                 DaysLeft = orderDto.DaysLeft,
                 Status = orderDto.Status,
-                //Customer.Id = orderDto.CustomerId, //asi zrušit
+                //Customer.Id = orderDto.CustomerId, // Id by se mělo vyplnit samo
                 Title = orderDto.Title,
                 Description = orderDto.Description,
                 InvoiceNum = orderDto.InvoiceNum,

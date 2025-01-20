@@ -4,7 +4,7 @@
 	<h4>Vložit nového zákazníka</h4>
 	<form asp-controller="Customers" asp-action="Create">
 		<div class="col">
-			<label asp-for="CompanyName">Název společnosti:</label>		@*SELECT - VIEWBAG*@
+			<label asp-for="CompanyName">Název společnosti:</label>
 			<input type="text" asp-for="CompanyName" class="form-control" />
 		</div>
 		<div class="row">
@@ -33,12 +33,12 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<label asp-for="ApartmentNumber">Číslo popisné:</label>
-				<input type="text" asp-for="ApartmentNumber" class="form-control" />
+				<label asp-for="HouseNumber">Číslo popisné:</label>
+				<input type="text" asp-for="HouseNumber" class="form-control" />
 			</div>
 			<div class="col">
-				<label asp-for="HouseNumber">Číslo orientační:</label>
-				<input type="text" asp-for="HouseNumber" class="form-control" />
+				<label asp-for="StreetNumber">Číslo orientační:</label>
+				<input type="text" asp-for="StreetNumber" class="form-control" />
 			</div>
 			<div class="col">
 				<label asp-for="PostalCode">PSČ:</label>

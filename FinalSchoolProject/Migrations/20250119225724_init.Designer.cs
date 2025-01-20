@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalSchoolProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250117212217_init")]
+    [Migration("20250119225724_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -32,10 +32,6 @@ namespace FinalSchoolProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApartmentNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -44,7 +40,7 @@ namespace FinalSchoolProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("HouseNumber")
@@ -63,9 +59,15 @@ namespace FinalSchoolProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("StreetNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId")
+                        .IsUnique()
+                        .HasFilter("[CustomerId] IS NOT NULL");
 
                     b.ToTable("Addresses");
                 });
@@ -77,6 +79,9 @@ namespace FinalSchoolProject.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AddressId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CIN")
                         .IsRequired()
@@ -166,10 +171,8 @@ namespace FinalSchoolProject.Migrations
             modelBuilder.Entity("FinalSchoolProject.Models.Address", b =>
                 {
                     b.HasOne("FinalSchoolProject.Models.Customer", "Customer")
-                        .WithMany("Addresses")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithOne("Address")
+                        .HasForeignKey("FinalSchoolProject.Models.Address", "CustomerId");
 
                     b.Navigation("Customer");
                 });
@@ -187,7 +190,7 @@ namespace FinalSchoolProject.Migrations
 
             modelBuilder.Entity("FinalSchoolProject.Models.Customer", b =>
                 {
-                    b.Navigation("Addresses");
+                    b.Navigation("Address");
 
                     b.Navigation("Orders");
                 });

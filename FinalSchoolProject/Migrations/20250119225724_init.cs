@@ -22,6 +22,7 @@ namespace FinalSchoolProject.Migrations
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AddressId = table.Column<int>(type: "int", nullable: false),
                     NumberOfOrders = table.Column<int>(type: "int", nullable: false),
                     RegistrationDate = table.Column<DateOnly>(type: "date", nullable: false)
                 },
@@ -40,10 +41,10 @@ namespace FinalSchoolProject.Migrations
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApartmentNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StreetNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Region = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    CustomerId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,8 +53,7 @@ namespace FinalSchoolProject.Migrations
                         name: "FK_Addresses_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -88,7 +88,9 @@ namespace FinalSchoolProject.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_CustomerId",
                 table: "Addresses",
-                column: "CustomerId");
+                column: "CustomerId",
+                unique: true,
+                filter: "[CustomerId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CustomerId",

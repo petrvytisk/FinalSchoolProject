@@ -5,8 +5,8 @@
 	<form asp-controller="Orders" asp-action="Create">
 		<div class="row">
 			<div class="col">
-				<label asp-for="CustomerId">Název společnosti:</label>		@*SELECT - VIEWBAG*@
-				<input type="text" asp-for="Title" class="form-control" />
+				@* <label asp-for="CustomerId">Název společnosti:</label>		@*SELECT - VIEWBAG
+				<input type="text" asp-for="CustomerId" class="form-control" /> *@
 			</div>
 			<div class="col">
 				<label asp-for="TotalPrice">Celková cena:</label>
@@ -33,7 +33,7 @@
 		</div>
 		<div>
 			<label asp-for="Description">Podrobnosti:</label>
-			<textarea asp-for="Description" class="form-control" id="story" name="story" rows="5" cols="33">
+			<textarea asp-for="Description" class="form-control" rows="6" cols="30">
 		Zde můžete napsat všechny podrobnosti k objednávce...
 		</textarea>
 		</div>

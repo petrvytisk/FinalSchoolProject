@@ -10,6 +10,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 });
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<AddressService>();
 
 var app = builder.Build();
 
@@ -30,7 +31,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Orders}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+// pattern: "{controller=Orders}/{action=Index}/{id?}"); moje
 // pattern: "{controller=Home}/{action=Index}/{id?}"); pùvodní
 
 app.Run();

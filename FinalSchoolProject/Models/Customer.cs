@@ -6,8 +6,9 @@
         public string Phone { get; set; } = string.Empty;
         public string CIN { get; set; } = string.Empty; // IČO
         public string TIN { get; set; } = string.Empty; // DIČ
-        public ICollection<Address> Addresses { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public int AddressId { get; set; } // Cizí klíč
+        public Address? Address { get; set; }
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
         public int NumberOfOrders { get; set; }
         public DateOnly RegistrationDate { get; set; }
     }
