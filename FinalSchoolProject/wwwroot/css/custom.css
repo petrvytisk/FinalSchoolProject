@@ -12372,3 +12372,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.custom-p {
+  margin: 0;
+  /*padding: 0;*/
+  line-height: 1.4;
+}
+
+hr {
+  margin: 0.25rem 0px;
+}

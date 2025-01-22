@@ -12,7 +12,7 @@ namespace FinalSchoolProject.Models {
         public string Region { get; set; } = string.Empty;  //  kraj (oblast)
         // Navigační vlastnost na Customer
         public Customer? Customer { get; set; }
-        // Nepovinný cizí klíč (volitelné, ale doporučené pro explicitnost)
+        // Nepovinný cizí klíč (volitelné, ale doporučené pro explicitnost) - lze pak jednosuše zahrnou pomocí ".Include"
         public int? CustomerId { get; set; }
     }
 }

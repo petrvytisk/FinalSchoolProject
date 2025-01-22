@@ -11,3 +11,13 @@ $success: pink;
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // Then add additional custom code here
+
+.custom-p {
+    margin: 0;
+    /*padding: 0;*/
+    line-height: 1.4;
+}
+
+hr {
+    margin: 0.25rem 0px;
+}

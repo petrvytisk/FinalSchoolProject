@@ -13,17 +13,20 @@ namespace FinalSchoolProject.Services {
         // VÝPIS ZÁZNAMŮ
         // Metoda načte všechny zákazníky a vrátí je ve formě viewmodelu
         public async Task<IEnumerable<CustomerWithAddressVM>> GetAllCustomersAsync() {
-            var allCustomers = await _dbContext.Customers.ToListAsync();
-            var CustomerVMs = new List<CustomerWithAddressVM>();
+            var allCustomers = await _dbContext.Customers.Include(c => c.Address).ToListAsync();    // Zahrnutí adresy
+
+            var customerVMs = new List<CustomerWithAddressVM>();
             foreach (var customer in allCustomers) {
-                CustomerVMs.Add(modelToVm(customer));
+                customerVMs.Add(modelToVm(customer));
             }
-            return CustomerVMs;
+            return customerVMs;
         }
 
         // Metoda uloží nového zákazníka + adresu
         public async Task<int> CreateCustomerAsync(CustomerWithAddressVM newCustomer) {
             var customer = VmToModel(newCustomer);
+            // Nastavení aktuálního data registrace
+            customer.RegistrationDate = DateOnly.FromDateTime(DateTime.Now);
             await _dbContext.Customers.AddAsync(customer);
             await _dbContext.SaveChangesAsync();
             return customer.Id; // Vrátí skutečné ID vytvořeného zákazníka
@@ -38,9 +41,6 @@ namespace FinalSchoolProject.Services {
         }
 
         // Mapovací metoda MODEL => VIEWMODEL
-        // Je to mapovací metoda pro přenos dat do view
-        // Budu muset nějak vybrat z kolekce tu správnou..
-        // Není dokončeno!
         private CustomerWithAddressVM modelToVm(Customer customer) {
             return new CustomerWithAddressVM {
                 Id = customer.Id,
@@ -50,6 +50,13 @@ namespace FinalSchoolProject.Services {
                 CIN = customer.CIN,
                 TIN = customer.TIN,
                 RegistrationDate = customer.RegistrationDate,
+                Street = customer.Address?.Street,   // Kontrola null
+                City = customer.Address?.City,
+                PostalCode = customer.Address?.PostalCode,
+                HouseNumber = customer.Address?.HouseNumber,
+                StreetNumber = customer.Address?.StreetNumber,
+                Country = customer.Address?.Country,
+                Region = customer.Address?.Region,
             };
         }
 
@@ -61,8 +68,6 @@ namespace FinalSchoolProject.Services {
                 Phone = newCustomer.Phone,
                 CIN = newCustomer.CIN,
                 TIN = newCustomer.TIN,
-                RegistrationDate = newCustomer.RegistrationDate,
-
             };
         }
     }
