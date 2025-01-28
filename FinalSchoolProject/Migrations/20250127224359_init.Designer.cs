@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalSchoolProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250119225724_init")]
+    [Migration("20250127224359_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -52,15 +52,12 @@ namespace FinalSchoolProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Region")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Street")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -80,7 +77,7 @@ namespace FinalSchoolProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AddressId")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("CIN")
@@ -106,7 +103,6 @@ namespace FinalSchoolProject.Migrations
                         .HasColumnType("date");
 
                     b.Property<string>("TIN")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -122,8 +118,8 @@ namespace FinalSchoolProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("Accepted")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Accepted")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -131,41 +127,95 @@ namespace FinalSchoolProject.Migrations
                     b.Property<int>("DaysLeft")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("Deadline")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Deadline")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DeliveryNoteNum")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InvoiceNum")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PriceOfferNum")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("FinalSchoolProject.Models.Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "PŘIJATO"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "PŘÍPRAVA"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "VÝROBA"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "KONTROLA"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "EXPEDICE"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "FAKTURACE"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "HOTOVO"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "REKLAMACE"
+                        });
                 });
 
             modelBuilder.Entity("FinalSchoolProject.Models.Address", b =>

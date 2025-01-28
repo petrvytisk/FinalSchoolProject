@@ -1,5 +1,6 @@
 using FinalSchoolProject.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<AddressService>();
+
+// Nastavení kultury pro ÈR
+var defaultCulture = new CultureInfo("cs-CZ");
+CultureInfo.DefaultThreadCurrentCulture = defaultCulture;
+CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
 
 var app = builder.Build();
 

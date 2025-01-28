@@ -1,16 +1,25 @@
-﻿namespace FinalSchoolProject.DTO {
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FinalSchoolProject.DTO {
     public class OrderDTO {
         public int Id { get; set; }
-        public DateOnly Accepted { get; set; }
-        public DateOnly Deadline { get; set; }
+        [Required(ErrorMessage = "Datum přijetí je povinné.")]
+        public DateTime Accepted { get; set; }
+        [Required(ErrorMessage = "Termín dokončení je povinný.")]
+        public DateTime Deadline { get; set; }
         public int DaysLeft { get; set; }
-        public string Status { get; set; } = string.Empty;
+        //[Required]
+        public int StatusId { get; set; }
+        public string? StatusName { get; set; }
+        [Required]
         public int CustomerId { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string InvoiceNum { get; set; } = string.Empty;
-        public string PriceOfferNum { get; set; } = string.Empty;
-        public string DeliveryNoteNum { get; set; } = string.Empty;
-        public double TotalPrice { get; set; }
+        [Required(ErrorMessage = "Předmět (stručný popis) objednávky je povinný.")]
+        public string Title { get; set; }
+        public string? Description { get; set; }
+        public string? InvoiceNum { get; set; }
+        public string? PriceOfferNum { get; set; }
+        public string? DeliveryNoteNum { get; set; }
+        [Required(ErrorMessage = "Celková cena je povinná.")]
+        public decimal TotalPrice { get; set; }
     }
 }

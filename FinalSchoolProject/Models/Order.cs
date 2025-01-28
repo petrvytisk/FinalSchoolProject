@@ -1,18 +1,28 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace FinalSchoolProject.Models {
     public class Order {
         public int Id { get; set; }
-        public DateOnly Accepted { get; set; }
-        public DateOnly Deadline { get; set; }
+        [Required]
+        public DateTime Accepted { get; set; }
+        [Required]
+        public DateTime Deadline { get; set; }
         public int DaysLeft { get; set; }
-        public string Status { get; set; } = string.Empty;
+        [Required]
+        public int StatusId { get; set; } // Cizí klíč
+        public Status Status { get; set; }  // Navigační vlastnost
+        [Required]
         public int CustomerId { get; set; } // Cizí klíč
-        public Customer? Customer { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string InvoiceNum { get; set; } = string.Empty;
-        public string PriceOfferNum { get; set; } = string.Empty;
-        public string DeliveryNoteNum { get; set; } = string.Empty;
-        public double TotalPrice { get; set; }
+        [Required]
+        public Customer Customer { get; set; }  // Navigační vlastnost
+        [Required]
+        public string Title { get; set; }
+        public string? Description { get; set; }
+        public string? InvoiceNum { get; set; }
+        public string? PriceOfferNum { get; set; }
+        public string? DeliveryNoteNum { get; set; }
+        [Required]
+        public decimal TotalPrice { get; set; }
     }
 }

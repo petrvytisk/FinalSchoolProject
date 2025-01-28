@@ -3,24 +3,29 @@
 <div class="container">
 	<h4>Vložit nového zákazníka</h4>
 	<form asp-controller="Customers" asp-action="Create">
+		<div asp-validation-summary="All" class="text-danger"></div>
 		<div class="col">
 			<label asp-for="CompanyName">Název společnosti:</label>
-			<input type="text" asp-for="CompanyName" class="form-control" />
+			<input type="text" asp-for="CompanyName" class="form-control" placeholder="Good Company, s.r.o." />
+			<span asp-validation-for="CompanyName" class="text-danger"></span>
 		</div>
 		<div class="row">
 			<div class="col">
 				<label asp-for="Email">E-mail:</label>
 				<input type="email" asp-for="Email" class="form-control" />
+				<span asp-validation-for="Email" class="text-danger"></span>
 			</div>
 			<div class="col">
 				<label asp-for="Phone">Tel:</label>
 				<input type="tel" asp-for="Phone" class="form-control" />
+				<span asp-validation-for="Phone" class="text-danger"></span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<label asp-for="CIN">IČO:</label>
 				<input type="text" asp-for="CIN" class="form-control" />
+				<span asp-validation-for="CIN" class="text-danger"></span>
 			</div>
 			<div class="col">
 				<label asp-for="TIN">DIČ:</label>
@@ -35,6 +40,7 @@
 			<div class="col">
 				<label asp-for="HouseNumber">Číslo popisné:</label>
 				<input type="text" asp-for="HouseNumber" class="form-control" />
+				<span asp-validation-for="HouseNumber" class="text-danger"></span>
 			</div>
 			<div class="col">
 				<label asp-for="StreetNumber">Číslo orientační:</label>
@@ -43,16 +49,19 @@
 			<div class="col">
 				<label asp-for="PostalCode">PSČ:</label>
 				<input type="text" asp-for="PostalCode" class="form-control" />
+				<span asp-validation-for="PostalCode" class="text-danger"></span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<label asp-for="City">Město:</label>
 				<input type="text" asp-for="City" class="form-control" />
+				<span asp-validation-for="City" class="text-danger"></span>
 			</div>
 			<div class="col">
 				<label asp-for="Country">Stát:</label>
 				<input type="text" asp-for="Country" class="form-control" />
+				<span asp-validation-for="Country" class="text-danger"></span>
 			</div>
 			<div class="col">
 				<label asp-for="Region">Kraj:</label>
@@ -65,4 +74,10 @@
 		</div>
 	</form>
 </div>
+
+@section Scripts {
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
 
