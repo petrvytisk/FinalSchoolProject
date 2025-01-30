@@ -17,6 +17,7 @@ namespace FinalSchoolProject.ViewModels {
         public string? TIN { get; set; } // DIČ
         public DateOnly RegistrationDate { get; set; }
         // Adresa
+        public int AddressId { get; set; } // PŘIDÁNO
         public string? Street { get; set; }  //  ulice
         [Required(ErrorMessage = "Město je povinné.")]
         public string City { get; set; }   // město

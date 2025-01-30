@@ -40,5 +40,21 @@ namespace FinalSchoolProject.Controllers {
             //return RedirectToAction("Index"); // pokus
             return RedirectToAction("Index", "Orders");
         }
+        // EDIT krok 1
+        // zobrazí formulář s načtenými údaji konkrétního zákazníka
+        public async Task<IActionResult> Edit(int id) {
+            var customerToEdit = await _service.GetByIdAsync(id); //vyhledání zákazníka dle ID a uložení do proměnné
+            if (customerToEdit == null) {
+                return View("NotFound");
+            }
+            return View(customerToEdit);    // zobrazení údajů ve formuláři
+        }
+        // EDIT krok 4
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, CustomerWithAddressVM editedCustomer) {
+            await _addressService.UpdateAddressAsync(id, editedCustomer);
+            await _service.UpdateCustomerAsync(id, editedCustomer);
+            return RedirectToAction("Index");
+        }
     }
 }

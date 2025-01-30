@@ -11,7 +11,7 @@ namespace FinalSchoolProject.DTO {
         //[Required]
         public int StatusId { get; set; }
         public string? StatusName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Žádný zákazník v seznamu. => nejprve proveďte jeho registraci.")]
         public int CustomerId { get; set; }
         [Required(ErrorMessage = "Předmět (stručný popis) objednávky je povinný.")]
         public string Title { get; set; }
@@ -20,6 +20,8 @@ namespace FinalSchoolProject.DTO {
         public string? PriceOfferNum { get; set; }
         public string? DeliveryNoteNum { get; set; }
         [Required(ErrorMessage = "Celková cena je povinná.")]
-        public decimal TotalPrice { get; set; }
+        [RegularExpression(@"^\d+([,]\d{1,2})?$", ErrorMessage = "Zadejte platné číslo ve formátu s desetinnou čárkou. (např. 123,45).")]
+        public string TotalPrice { get; set; }
+        public decimal TotalPriceDec {  get; set; }
     }
 }

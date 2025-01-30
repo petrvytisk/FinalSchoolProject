@@ -3,13 +3,14 @@
 @model IEnumerable<OrderDTO>
 <div>
     <div class="row">
-        <div class="col-5">
-            <h3>Přehled všech objednávek</h3>
+        <div class="col-12">
+            <h4>Přijaté objednávky</h4>
         </div>
-        <div class="col-2">
+        <div class="col-8">
+        </div>
+        <div class="col-4">
             <a class="btn btn-success" asp-action="Create">Create</a>
         </div>
-        <div class="col-3"></div>
     </div>
 </div>
 @* 1, 2, 2, 1, 13, 3, 1, 1 *@
@@ -64,8 +65,8 @@
         <div class="col-13">
             <p>@item.Title</p>
         </div>
-        <div class="col align-items-end">
-            <p>@item.TotalPrice.ToString("N", new CultureInfo("cs-CZ")) Kč</p>
+        <div class="col-2 mx-2">
+            <p class="text-end">@item.TotalPrice Kč</p>
         </div>
         <div class="col">
             <a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Edit</a> @*bude chtít doladit*@

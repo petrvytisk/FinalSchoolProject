@@ -3,6 +3,7 @@ using FinalSchoolProject.DTO;
 using FinalSchoolProject.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace FinalSchoolProject.Services {
     public class OrderService {
@@ -13,7 +14,7 @@ namespace FinalSchoolProject.Services {
         }
         // Metoda načte všechny objednávky a vrátí je ve formě DTO
         public async Task<IEnumerable<OrderDTO>> GetAllOrdersAsync() {
-            var allOrders = await _dbContext.Orders.Include(o=>o.Status).ToListAsync();  //INCLUDE???
+            var allOrders = await _dbContext.Orders.Include(o=>o.Status).ToListAsync();
             var orderDTOs = new List<OrderDTO>();
             foreach (var order in allOrders) {
                 orderDTOs.Add(modelToDto(order));
@@ -27,12 +28,12 @@ namespace FinalSchoolProject.Services {
         //    await _dbContext.SaveChangesAsync();
         //}
 
-        public async Task CreateAsync(OrderDTO newOrder) {
-            Order orderToInsert = await DtoToModelAsync(newOrder);
-            //if (orderToInsert.Customer != null) {
+        public async Task CreateAsync(OrderDTO newOrder, decimal totalPriceDecimal) {
+            Order orderToInsert = await DtoToModelAsync(newOrder, totalPriceDecimal);
+            if (orderToInsert.Customer != null) {   // tato kontrola už se selectem asi nemá význam
                 await _dbContext.Orders.AddAsync(orderToInsert);
                 await _dbContext.SaveChangesAsync();
-            //}
+            }
         }
 
         // Metoda načte data o zákaznících pro SELECT
@@ -61,12 +62,12 @@ namespace FinalSchoolProject.Services {
                 InvoiceNum = order.InvoiceNum,
                 PriceOfferNum = order.PriceOfferNum,
                 DeliveryNoteNum = order.DeliveryNoteNum,
-                TotalPrice = order.TotalPrice,
+                TotalPrice = order.TotalPrice.ToString("N", new CultureInfo("cs-CZ")),
             };
         }
 
         // Mapovací metoda DTO => MODEL
-        private async Task<Order> DtoToModelAsync(OrderDTO orderDto) {
+        private async Task<Order> DtoToModelAsync(OrderDTO orderDto, decimal totalPriceDecimal) {
             orderDto.DaysLeft = (orderDto.Deadline - DateTime.Now).Days;
             return new Order() {
                 Accepted = orderDto.Accepted,
@@ -81,7 +82,7 @@ namespace FinalSchoolProject.Services {
                 InvoiceNum = orderDto.InvoiceNum,
                 PriceOfferNum = orderDto.PriceOfferNum,
                 DeliveryNoteNum = orderDto.DeliveryNoteNum,
-                TotalPrice = orderDto.TotalPrice,
+                TotalPrice = totalPriceDecimal,
             };
         }
     }

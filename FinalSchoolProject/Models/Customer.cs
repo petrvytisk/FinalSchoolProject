@@ -14,7 +14,7 @@ namespace FinalSchoolProject.Models {
         [Required(ErrorMessage = "IČO je povinné.")]
         public string CIN { get; set; } // IČO
         public string? TIN { get; set; } // DIČ
-        public int? AddressId { get; set; } // Cizí klíč
+        public int AddressId { get; set; } // Cizí klíč     smazán ?
         public Address? Address { get; set; }
         public ICollection<Order> Orders { get; set; } = new List<Order>();
         public int NumberOfOrders { get; set; }

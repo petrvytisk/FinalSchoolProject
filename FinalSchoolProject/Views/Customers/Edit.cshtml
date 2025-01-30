@@ -2,7 +2,7 @@
 @model CustomerWithAddressVM;
 <div class="container">
 	<h4>Nový zákazník</h4>
-	<form asp-controller="Customers" asp-action="Create">
+	<form asp-controller="Customers" asp-action="Edit">
 		<div asp-validation-summary="All" class="text-danger"></div>
 		<div class="col">
 			<label asp-for="CompanyName">Název společnosti:</label>
@@ -70,8 +70,9 @@
 		</div>
 
 		<div>
-			<input class="btn btn-success" type="submit" value="Create" />
+			<input class="btn btn-success" type="submit" value="Update" />
 		</div>
+		<input type="hidden" asp-for="RegistrationDate" />
 	</form>
 </div>
 
@@ -80,4 +81,5 @@
 		<partial name="_ValidationScriptsPartial" />
 	}
 }
+
 
