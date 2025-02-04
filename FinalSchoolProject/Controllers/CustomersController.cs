@@ -37,8 +37,7 @@ namespace FinalSchoolProject.Controllers {
             int addressId = await _addressService.CreateAddressAsync(newCustomer, customerId);
             // Aktualizujeme zákazníka s ID adresy
             await _service.UpdateCustomerAddressId(customerId, addressId);
-            //return RedirectToAction("Index"); // pokus
-            return RedirectToAction("Index", "Orders");
+            return RedirectToAction("Index");
         }
         // EDIT krok 1
         // zobrazí formulář s načtenými údaji konkrétního zákazníka
@@ -54,6 +53,13 @@ namespace FinalSchoolProject.Controllers {
         public async Task<IActionResult> Edit(int id, CustomerWithAddressVM editedCustomer) {
             await _addressService.UpdateAddressAsync(id, editedCustomer);
             await _service.UpdateCustomerAsync(id, editedCustomer);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteAsync(int id) {
+            await _addressService.DeleteAsync(id);
+            await _service.DeleteAsync(id);
             return RedirectToAction("Index");
         }
     }

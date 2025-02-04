@@ -2,115 +2,114 @@
 @model IEnumerable<CustomerWithAddressVM>
 <div class="container">
 	<div class="row mb-4">
-		<div class="col-7">
+		<div class="col mb-2">
 			<h4>Registrovaní zákazníci</h4>
 		</div>
-		<div class="col-2">
-			<a class="btn btn-success" asp-action="Create">Create</a>
+		<div class="col d-flex justify-content-end">
+			<a class="btn btn-success" asp-action="Create">Nový zákazník</a>
 		</div>
-		<div class="col-3"></div>
-	</div>
 
-	<div class="row">
-		<div class="col-1">
-			<h6>ID</h6>
-		</div>
-		<div class="col-7">
-			<h6>SPOLEČNOST</h6>
-		</div>
-		<div class="col-6">
-			<h6>KONTAKTY</h6>
-		</div>
-		<div class="col-8">
-			<h6>ADRESA</h6>
-		</div>
-		<div class="col-2">
-			<h6>AKCE</h6>
-		</div>
-	</div>
-	<hr />
-
-	@foreach (var item in Model)
-	{
-		@* R1 *@
 		<div class="row">
-			@* S1 - ID *@
 			<div class="col-1">
-				<p class="custom-p">@item.Id</p>
+				<h6>ID</h6>
 			</div>
-			@* S1 - Společnost *@
-			<div class="col-7">
-				@* R2 *@
-				<div class="row">
-					<h6>@item.CompanyName</h6>
-				</div>
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">IČO: @item.CIN</p>
-				</div>
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">DIČ: @item.TIN</p>
-				</div>
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">Datum registrace: @item.RegistrationDate.ToShortDateString()</p>
-				</div>
-			</div>
-			@* S1 - Kontakty *@
-			<div class="col-6">
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">E-mail: @item.Email</p>
-				</div>
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">Tel: @item.Phone</p>
-				</div>
-				@* R2 *@
-				<div class="row">
-				</div>
-			</div>
-			@* S1 - Adresa *@
 			<div class="col-8">
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">@item.Street @item.HouseNumber / @item.StreetNumber</p>
-				</div>
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">@item.City, @item.PostalCode</p>
-				</div>
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">@item.Country</p>
-				</div>
-				@* R2 *@
-				<div class="row">
-					<p class="custom-p">@item.Region</p>
-				</div>
+				<h6>SPOLEČNOST</h6>
 			</div>
-			@* S1 - Akce *@
+			<div class="col-8">
+				<h6>KONTAKTY</h6>
+			</div>
+			<div class="col-9">
+				<h6>ADRESA</h6>
+			</div>
 			<div class="col-2">
-				@* R2 *@
-				<div class="row">
-					<a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Edit</a> @*bude chtít doladit*@
-				</div>
-				@* R2 *@
-				<div class="row">
-					<form style="display:inline" method="post">
-						@*bude chtít doladit*@
-						<input class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id type="submit" value="Delete" />
-					</form>
-				</div>
+				<h6>AKCE</h6>
 			</div>
-
 		</div>
 		<hr />
 
+		@foreach (var item in Model)
+		{
+			@* R1 *@
+			<div class="row">
+				@* S1 - ID *@
+				<div class="col-1">
+					<p class="custom-p">@item.Id</p>
+				</div>
+				@* S1 - Společnost *@
+				<div class="col-8">
+					@* R2 *@
+					<div class="row">
+						<h6>@item.CompanyName</h6>
+					</div>
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">IČO: @item.CIN</p>
+					</div>
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">DIČ: @item.TIN</p>
+					</div>
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">Datum registrace: @item.RegistrationDate.ToShortDateString()</p>
+					</div>
+				</div>
+				@* S1 - Kontakty *@
+				<div class="col-8">
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">E-mail: @item.Email</p>
+					</div>
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">Tel: @item.Phone</p>
+					</div>
+					@* R2 *@
+					<div class="row">
+					</div>
+				</div>
+				@* S1 - Adresa *@
+				<div class="col-9">
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">@item.Street @item.HouseNumber / @item.StreetNumber</p>
+					</div>
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">@item.City, @item.PostalCode</p>
+					</div>
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">@item.Country</p>
+					</div>
+					@* R2 *@
+					<div class="row">
+						<p class="custom-p">@item.Region</p>
+					</div>
+				</div>
+				@* S1 - Akce *@
+				<div class="col-2">
+					@* R2 *@
+					<div class="row d-flex justify-content-end">
+						<a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Edit</a> @*bude chtít doladit*@
+					</div>
+					@* R2 *@
+					<div class="row d-flex justify-content-end">
+						<form style="display:inline" method="post">
+							@*bude chtít doladit*@
+							<input class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id type="submit" value="Delete" />
+						</form>
+					</div>
+				</div>
+
+			</div>
+			<hr />
 
 
 
 
-	}
+
+		}
+	</div>
 </div>

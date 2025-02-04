@@ -2,7 +2,7 @@
 @model OrderDTO
 <div class="container">
 	<h4>Nová objednávka</h4>
-	<form asp-controller="Orders" asp-action="Create">
+	<form asp-controller="Orders" asp-action="Edit">
 		<div asp-validation-summary="All" class="text-danger"></div>
 		<div class="row">
 			<div class="col">
@@ -60,7 +60,7 @@
 		</div>
 
 		<div class="mt-3">
-			<input class="btn btn-success" type="submit" value="Uložit" />
+			<input class="btn btn-success" type="submit" value="Uložit změny" />
 		</div>
 	</form>
 </div>

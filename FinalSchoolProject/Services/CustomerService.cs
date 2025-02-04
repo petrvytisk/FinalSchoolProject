@@ -95,5 +95,11 @@ namespace FinalSchoolProject.Services {
             await _dbContext.SaveChangesAsync();    // tímto je zákazník aktualizován
             return updatedCustomer;     // je nutné toto vracet??
         }
+
+        public async Task DeleteAsync(int id) {
+            var customerToDelete = await _dbContext.Customers.FirstOrDefaultAsync(c => c.Id == id);
+            _dbContext.Customers.Remove(customerToDelete);
+            _dbContext.SaveChanges();
+        }
     }
 }

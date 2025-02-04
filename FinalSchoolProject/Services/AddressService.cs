@@ -48,5 +48,11 @@ namespace FinalSchoolProject.Services {
             await _dbContext.SaveChangesAsync();    //tímto je adresa zákazníka aktualizována
             return updatedCustomer;     // je nutné toto vracet??
         }
+
+        public async Task DeleteAsync(int id) {
+            var addressToDelete = await _dbContext.Addresses.FirstOrDefaultAsync(c => c.CustomerId == id);
+            _dbContext.Addresses.Remove(addressToDelete);
+            _dbContext.SaveChanges();
+        }
     }
 }

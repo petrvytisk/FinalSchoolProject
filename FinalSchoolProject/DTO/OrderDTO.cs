@@ -13,6 +13,7 @@ namespace FinalSchoolProject.DTO {
         public string? StatusName { get; set; }
         [Required(ErrorMessage = "Žádný zákazník v seznamu. => nejprve proveďte jeho registraci.")]
         public int CustomerId { get; set; }
+        public string? CompanyName { get; set; } //nové
         [Required(ErrorMessage = "Předmět (stručný popis) objednávky je povinný.")]
         public string Title { get; set; }
         public string? Description { get; set; }

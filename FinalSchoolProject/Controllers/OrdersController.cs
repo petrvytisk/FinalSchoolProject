@@ -1,5 +1,6 @@
 ﻿using FinalSchoolProject.DTO;
 using FinalSchoolProject.Services;
+using FinalSchoolProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Globalization;
@@ -42,11 +43,33 @@ namespace FinalSchoolProject.Controllers {
             await _service.CreateAsync(newOrder, totalPriceDecimal);
             return RedirectToAction("Index");
         }
-        // uloží novou objednávku do databáze    PŮVODNÍ MOJE
-        //[HttpPost]
-        //public async Task<IActionResult> Create(OrderDTO newOrder) {
-        //    await _service.CreateAsync(newOrder);
-        //    return RedirectToAction("Index");
-        //}
+
+        //______________________________________________________________________________________
+        // EDIT krok 1
+        // zobrazí formulář s načtenými údaji konkrétního zákazníka
+        public async Task<IActionResult> Edit(int id) {
+            var orderToEdit = await _service.GetByIdAsync(id); //vyhledání zákazníka dle ID a uložení do proměnné
+            if (orderToEdit == null) {
+                return View("NotFound");
+            }
+            var ordersDropdownData = await _service.GetNewOrdersDropdownValues();   // získání dat pro select
+            ViewBag.Customers = new SelectList(ordersDropdownData.Customers, "Id", "CompanyName");
+            ViewBag.Statuses = new SelectList(ordersDropdownData.Statuses, "Id", "Name");
+            return View(orderToEdit);    // zobrazení údajů ve formuláři
+        }
+
+        //EDIT krok 4
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, OrderDTO editedOrder) {
+            await _service.UpdateOrderAsync(id, editedOrder);
+            //await _service.UpdateCustomerAsync(id, editedOrder);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteAsync(int id) {
+            await _service.DeleteAsync(id);
+            return RedirectToAction("Index");
+        }
     }
 }

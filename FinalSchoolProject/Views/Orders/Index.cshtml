@@ -2,106 +2,87 @@
 @using System.Globalization
 @model IEnumerable<OrderDTO>
 <div>
-    <div class="row">
-        <div class="col-12">
-            <h4>Přijaté objednávky</h4>
-        </div>
-        <div class="col-8">
-        </div>
+    <div class="row my-2">
         <div class="col-4">
-            <a class="btn btn-success" asp-action="Create">Create</a>
+        </div>
+        <div class="col-20 d-flex justify-content-center">
+            <h4>PŘIJATÉ OBJEDNÁVKY</h4>
+        </div>
+        <div class="col-4 d-flex justify-content-end">
+            <a class="btn btn-success" asp-action="Create">Nová objednávka</a>
         </div>
     </div>
 </div>
-@* 1, 2, 2, 1, 13, 3, 1, 1 *@
+
 <div class="row">
-    <div class="col">
+    <div class="col-1">
         <h6>ID</h6>
     </div>
-    <div class="col"> 
+    <div class="col-2"> 
         <h6>PŘIJATO</h6>
     </div>
-    <div class="col">
+    <div class="col-2">
         <h6>TERMÍN</h6>
     </div>
-    <div class="col">
+    <div class="col-2">
         <h6>ZBÝVÁ DNŮ</h6>
     </div>
-    <div class="col">
+    <div class="col-2">
         <h6>STATUS</h6>
     </div>
-    <div class="col-13">
+    <div class="col-3">
+        <h6>SPOLEČNOST</h6>
+    </div>
+    <div class="col-10">
         <h6>PŘEDMĚT OBJEDNÁVKY</h6>
     </div>
-    <div class="col">
+    <div class="col-2 d-flex justify-content-end">
         <h6>CENA</h6>
     </div>
-    <div class="col">
-        <h6>DETAIL</h6>
+    <div class="col-2">
+        @* <h6>DETAIL</h6> *@
     </div>
-    <div class="col">
-        <h6>SMAZAT</h6>
+    <div class="col-2">
+        @* <h6>SMAZAT</h6> *@
     </div>
 </div>
 <hr />
 @foreach (var item in Model)
 {
     <div class="row">
-        <div class="col">
+        <div class="col-1">
             <p>@item.Id</p>
         </div>
-        <div class="col">
+        <div class="col-2">
             <p>@item.Accepted.ToShortDateString()</p>
         </div>
-        <div class="col">
+        <div class="col-2">
             <p>@item.Deadline.ToShortDateString()</p>
         </div>
-        <div class="col">
+        <div class="col-2">
             <p>@item.DaysLeft</p>
         </div>
-        <div class="col">
+        <div class="col-2">
             <p>@item.StatusName</p>
         </div>
-        <div class="col-13">
+        <div class="col-3">
+            <p>@item.CompanyName</p>
+        </div>
+        <div class="col-10">
             <p>@item.Title</p>
         </div>
-        <div class="col-2 mx-2">
+        <div class="col-2">
             <p class="text-end">@item.TotalPrice Kč</p>
         </div>
-        <div class="col">
-            <a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Edit</a> @*bude chtít doladit*@
+        <div class="col-2 d-flex justify-content-center">
+            <a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Detail</a> @*bude chtít doladit*@
         </div>
-        <div class="col">
+        <div class="col-2 d-flex justify-content-center">
             <form style="display:inline" method="post">
                 @*bude chtít doladit*@
-                <input class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id type="submit" value="Delete" />
+                <input class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id type="submit" value="Smazat" />
             </form>
         </div>
         <hr />
     </div>
 }
-
-
-
-
-@*
-    z magistrů:
-@using FinalSchoolProject.DTO
-@model IEnumerable<OrderDTO>
-<h1>List of all orders</h1>
-@foreach (var item in Model)
-{
-    <div class="border border-1 border-dark p-2 ">
-        <h5>@item.FirstName @item.LastName</h5>
-        Id: @item.Id
-        <p>Date of Birth: @item.DateOfBirth.ToShortDateString()</p>
-        <a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
-        <form style="display:inline" method="post">
-            <input class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id type="submit" value="Delete" />
-        </form>
-    </div>
-}
-<hr />
-<div>
-    <a class="btn btn-success" asp-action="Create">Create</a>
-</div> *@
