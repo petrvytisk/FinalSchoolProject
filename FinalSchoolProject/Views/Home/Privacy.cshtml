@@ -1,6 +1,55 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Info";
 }
-<h1>@ViewData["Title"]</h1>
+<div class="container">
+    <h3>ZÁKLADNÍ INFORMACE</h3>
 
-<p>Use this page to detail your site's privacy policy.</p>
+    <p>Tato aplikace slouží jako systém pro správu objednávek.<br />
+        Pomocí přihlašovacích údajů níže můžete otestovat její funkcionalitu.
+    </p>
+
+    <h4>Přihlašovací údaje</h4>
+    <p>
+        <strong>Admin</strong><br>
+        Username: , password:
+    </p>
+    <p>
+        <strong>Zaměstnanec</strong><br>
+        Username: , password:
+    </p>
+
+    <h4>Použité role</h4>
+    <ul>
+        <li><strong>Admin</strong> - veškerá oprávnění a přístup: správa objednávek a zákazníků, správa účtů a rolí</li>
+        <li><strong>Zaměstnanec</strong> - správa objednávek a zákazníků</li>
+        <li><strong>Zákazník</strong> (nyní neaktivní) - možnost rozšíření do budoucna, aby viděl přehled a stav svých objednávek.</li>
+    </ul>
+
+    <h4>Funkce aplikace</h4>
+    <p>
+        Aplikace umožňuje vkládat, editovat, mazat objednávky a zobrazit přehled všech objednávek.<br>
+        Dále umožňuje vkládat, editovat, mazat zákazníky (firmy) a zobrazit přehled všech zákazníků.
+    </p>
+
+    <p class="warning">
+        ! Upozornění !<br>
+        Pro možnost vytvoření nové objednávky je nutné mít zákazníka již registrovaného.
+    </p>
+
+    <p>Na stránce objednávek se zobrazují jen vybraná data. Po kliknutí na "Detail" se zobrazí všechny informace, které lze dále editovat.</p>
+
+    <h5>Poznámka</h5>
+    <p>Výchozí Bootstrap 5.1 byl nahrazen verzí 5.3.3 z důvodu možnosti úpravy gridu přes SCSS a dále možnosti světlého/tmavého režimu.</p>
+
+    <h4>Možnosti rozšíření a vylepšení aplikace do budoucna</h4>
+    <ul>
+        <li>Použití účtu zákazníka - přehled o svých objednávkách</li>
+        <li>Světlý / tmavý režim</li>
+        <li>Český / anglický jazyk</li>
+        <li>U firmy ukládat i jméno osoby, možnost více adres: fakturační/doručovací</li>
+        <li>Barevné znázornění zbývajících dnů do termínu (zelená, oranžová, červená)</li>
+        <li>Pokud je objednávka vyřízena, nezobrazovat zbývající dny</li>
+        <li>Filtrování objednávek, zákazníků</li>
+        <li>Lepší zpracování frontendu</li>
+    </ul>
+</div>

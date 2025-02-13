@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalSchoolProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250202211547_AddIdentityRoles")]
-    partial class AddIdentityRoles
+    [Migration("20250213085604_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

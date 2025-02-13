@@ -63,7 +63,7 @@ namespace FinalSchoolProject.Migrations
                         .IsUnique()
                         .HasFilter("[CustomerId] IS NOT NULL");
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("FinalSchoolProject.Models.AppUser", b =>
@@ -169,7 +169,7 @@ namespace FinalSchoolProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("FinalSchoolProject.Models.Order", b =>
@@ -220,7 +220,7 @@ namespace FinalSchoolProject.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("FinalSchoolProject.Models.Status", b =>
@@ -237,7 +237,7 @@ namespace FinalSchoolProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses", (string)null);
+                    b.ToTable("Statuses");
 
                     b.HasData(
                         new

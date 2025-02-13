@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProjectDbConnection"]);
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:OMSAppDbConnection"]);
 });
 builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<OrderService>();
@@ -23,6 +23,11 @@ builder.Services.Configure<IdentityOptions>(options => {
     options.Password.RequireUppercase = true;
 }
 );
+//Toto bylo ve skriptech, ale nedává mi to smysl
+//builder.Services.ConfigureApplicationCookie(opts => {
+//    opts.AccessDeniedPath = "/Stop/Index";
+//});
+
 //zmena cesty k login formulari
 //builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Authenticate/Login");
 builder.Services.ConfigureApplicationCookie(options => {
@@ -58,7 +63,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-// pattern: "{controller=Orders}/{action=Index}/{id?}"); moje
-// pattern: "{controller=Home}/{action=Index}/{id?}"); pùvodní
 
 app.Run();

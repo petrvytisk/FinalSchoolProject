@@ -1,9 +1,11 @@
 ﻿using FinalSchoolProject.Models;
 using FinalSchoolProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalSchoolProject.Controllers {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller {
         private UserManager<AppUser> userManager;
         private IPasswordHasher<AppUser> passwordHasher;

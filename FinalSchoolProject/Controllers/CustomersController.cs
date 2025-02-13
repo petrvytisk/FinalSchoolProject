@@ -2,9 +2,11 @@
 using FinalSchoolProject.Models;
 using FinalSchoolProject.Services;
 using FinalSchoolProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalSchoolProject.Controllers {
+    [Authorize(Roles = "Admin, Employee")]
     public class CustomersController : Controller {
         private CustomerService _service;
         private AddressService _addressService;

@@ -1,11 +1,13 @@
 ﻿using FinalSchoolProject.DTO;
 using FinalSchoolProject.Services;
 using FinalSchoolProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Globalization;
 
 namespace FinalSchoolProject.Controllers {
+    [Authorize(Roles = "Admin, Employee")]
     public class OrdersController : Controller {
         private OrderService _service;
 

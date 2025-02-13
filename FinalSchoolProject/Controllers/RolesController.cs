@@ -1,9 +1,11 @@
 ﻿using FinalSchoolProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace FinalSchoolProject.Controllers {
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller {
         private RoleManager<IdentityRole> roleManager;
         private UserManager<AppUser> userManager;

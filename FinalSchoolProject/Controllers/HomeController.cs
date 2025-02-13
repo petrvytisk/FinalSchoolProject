@@ -20,7 +20,7 @@ namespace FinalSchoolProject.Controllers
         [Authorize]
         public async Task<IActionResult> Index() {
             AppUser user = await userManager.GetUserAsync(HttpContext.User);
-            string message = $"Hello {user.UserName}";
+            string message = $"Ahoj {user.UserName}";
             return View("Index", message);
         }
 

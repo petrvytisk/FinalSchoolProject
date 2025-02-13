@@ -6,10 +6,10 @@
         <div class="col-4">
         </div>
         <div class="col-20 d-flex justify-content-center">
-            <h4>PŘIJATÉ OBJEDNÁVKY</h4>
+            <h3>PŘIJATÉ OBJEDNÁVKY</h3>
         </div>
         <div class="col-4 d-flex justify-content-end">
-            <a class="btn btn-success" asp-action="Create">Nová objednávka</a>
+            <a class="btn btn-primary" asp-action="Create">Nová objednávka</a>
         </div>
     </div>
 </div>
@@ -75,7 +75,7 @@
             <p class="text-end">@item.TotalPrice Kč</p>
         </div>
         <div class="col-2 d-flex justify-content-center">
-            <a class="btn btn-warning" asp-action="Edit" asp-route-id=@item.Id>Detail</a> @*bude chtít doladit*@
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id=@item.Id>Detail</a> @*bude chtít doladit*@
         </div>
         <div class="col-2 d-flex justify-content-center">
             <form style="display:inline" method="post">
