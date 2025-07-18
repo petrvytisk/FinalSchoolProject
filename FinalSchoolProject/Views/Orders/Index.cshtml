@@ -1,88 +1,48 @@
 ﻿@using FinalSchoolProject.DTO
 @using System.Globalization
 @model IEnumerable<OrderDTO>
-<div>
-    <div class="row my-2">
-        <div class="col-4">
-        </div>
-        <div class="col-20 d-flex justify-content-center">
-            <h3>PŘIJATÉ OBJEDNÁVKY</h3>
-        </div>
-        <div class="col-4 d-flex justify-content-end">
-            <a class="btn btn-primary" asp-action="Create">Nová objednávka</a>
-        </div>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Přijaté objednávky</h1>
+        <a class="btn btn-success btn-sm success-action-btn" asp-action="Create">Nová objednávka</a>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-1">
-        <h6>ID</h6>
-    </div>
-    <div class="col-2"> 
-        <h6>PŘIJATO</h6>
-    </div>
-    <div class="col-2">
-        <h6>TERMÍN</h6>
-    </div>
-    <div class="col-2">
-        <h6>ZBÝVÁ DNŮ</h6>
-    </div>
-    <div class="col-2">
-        <h6>STATUS</h6>
-    </div>
-    <div class="col-3">
-        <h6>SPOLEČNOST</h6>
-    </div>
-    <div class="col-10">
-        <h6>PŘEDMĚT OBJEDNÁVKY</h6>
-    </div>
-    <div class="col-2 d-flex justify-content-end">
-        <h6>CENA</h6>
-    </div>
-    <div class="col-2">
-        @* <h6>DETAIL</h6> *@
-    </div>
-    <div class="col-2">
-        @* <h6>SMAZAT</h6> *@
-    </div>
+    <table class="table table-striped">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Přijato</th>
+                <th scope="col">Termín</th>
+                <th scope="col">Zbývá dnů</th>
+                <th scope="col">Status</th>
+                <th scope="col">Společnost</th>
+                <th scope="col">Předmět objednávky</th>
+                <th scope="col" class="text-end">Cena</th>
+                <th scope="col" class="text-center">Detaily</th>
+                <th scope="col" class="text-center">Smazat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Accepted.ToShortDateString()</td>
+                    <td>@item.Deadline.ToShortDateString()</td>
+                    <td>@item.DaysLeft</td>
+                    <td>@item.StatusName</td>
+                    <td>@item.CompanyName</td>
+                    <td>@item.Title</td>
+                    <td class="text-end">@item.TotalPrice Kč</td>
+                    <td class="text-center">
+                        <a class="btn btn-warning btn-sm action-btn" asp-action="Edit" asp-route-id="@item.Id">Detail</a>
+                    </td>
+                    <td class="text-center">
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Opravdu smazat objednávku #@item.Id?');">
+                            <button type="submit" class="btn btn-danger btn-sm action-btn">Smazat</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-<hr />
-@foreach (var item in Model)
-{
-    <div class="row">
-        <div class="col-1">
-            <p>@item.Id</p>
-        </div>
-        <div class="col-2">
-            <p>@item.Accepted.ToShortDateString()</p>
-        </div>
-        <div class="col-2">
-            <p>@item.Deadline.ToShortDateString()</p>
-        </div>
-        <div class="col-2">
-            <p>@item.DaysLeft</p>
-        </div>
-        <div class="col-2">
-            <p>@item.StatusName</p>
-        </div>
-        <div class="col-3">
-            <p>@item.CompanyName</p>
-        </div>
-        <div class="col-10">
-            <p>@item.Title</p>
-        </div>
-        <div class="col-2">
-            <p class="text-end">@item.TotalPrice Kč</p>
-        </div>
-        <div class="col-2 d-flex justify-content-center">
-            <a class="btn btn-primary" asp-action="Edit" asp-route-id=@item.Id>Detail</a> @*bude chtít doladit*@
-        </div>
-        <div class="col-2 d-flex justify-content-center">
-            <form style="display:inline" method="post">
-                @*bude chtít doladit*@
-                <input class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id type="submit" value="Smazat" />
-            </form>
-        </div>
-        <hr />
-    </div>
-}

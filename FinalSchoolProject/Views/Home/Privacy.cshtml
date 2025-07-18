@@ -2,32 +2,43 @@
     ViewData["Title"] = "Info";
 }
 <div class="container">
-    <h3>ZÁKLADNÍ INFORMACE</h3>
+    <h1>ZÁKLADNÍ INFORMACE</h1>
 
     <p>Tato aplikace slouží jako systém pro správu objednávek.<br />
         Pomocí přihlašovacích údajů níže můžete otestovat její funkcionalitu.
     </p>
 
-    <h4>Přihlašovací údaje</h4>
+    <h2>Přihlašovací údaje</h2>
     <p>
         <strong>Admin</strong><br>
         Uživatelské jméno: Adam<br>
-        heslo: Abcd1234.
+        heslo: viz odstavec níže "Jak zjistit heslo"<br>
+    </p>
+
+    <h3>Jak zjistit heslo</h3>
+
+    <p>
+        Základ hesla: A<strong>?</strong>c<strong>?</strong>1<strong>?</strong>3<strong>?</strong>.<br>
+        Otazníky nahraďte (zleva doprava) následujícími znaky:<br>
+        <strong>?</strong> -> druhé písmeno abecedy (malé)<br>
+        <strong>?</strong> -> čtvrté písmeno abecedy (malé)<br>
+        <strong>?</strong> -> číslo dva<br>
+        <strong>?</strong> -> číslo čtyři<br>
     </p>
     <p>
         <strong>Zaměstnanec</strong><br>
         Uživatelské jméno: Zuzana<br>
-        heslo: Abcd1234.
+        heslo: stejné jako Admin
     </p>
 
-    <h4>Použité role</h4>
+    <h2>Použité role</h2>
     <ul>
         <li><strong>Admin</strong> - veškerá oprávnění a přístup: správa objednávek a zákazníků, správa účtů a rolí</li>
         <li><strong>Zaměstnanec</strong> - správa objednávek a zákazníků</li>
         <li><strong>Zákazník</strong> (nyní neaktivní) - možnost rozšíření do budoucna, aby viděl přehled a stav svých objednávek.</li>
     </ul>
 
-    <h4>Funkce aplikace</h4>
+    <h2>Funkce aplikace</h2>
     <p>
         Aplikace umožňuje vkládat, editovat, mazat objednávky a zobrazit přehled všech objednávek.<br>
         Dále umožňuje vkládat, editovat, mazat zákazníky (firmy) a zobrazit přehled všech zákazníků.
@@ -40,10 +51,10 @@
 
     <p>Na stránce objednávek se zobrazují jen vybraná data. Po kliknutí na "Detail" se zobrazí všechny informace, které lze dále editovat.</p>
 
-    <h5>Poznámka</h5>
-    <p>Výchozí Bootstrap 5.1 byl nahrazen verzí 5.3.3 z důvodu možnosti úpravy gridu přes SCSS a dále možnosti světlého/tmavého režimu.</p>
+    <h3>Poznámka</h3>
+    <p>Výchozí Bootstrap 5.1 byl nahrazen verzí 5.3.3 z důvodu možnosti úpravy gridu přes SCSS a dále možnosti aplikace světlého/tmavého režimu.</p>
 
-    <h4>Možnosti rozšíření a vylepšení aplikace do budoucna</h4>
+    <h2>Možnosti rozšíření a vylepšení aplikace do budoucna</h2>
     <ul>
         <li>Použití účtu zákazníka - přehled o svých objednávkách</li>
         <li>Světlý / tmavý režim</li>

@@ -4,7 +4,7 @@
 	ViewData["Title"] = "Login";
 }
 <div class="container">
-	<h3>Přihlášení</h3>
+	<h1>Přihlášení</h1>
 	<div class="text-danger" asp-validation-summary="All"></div>
 	<form asp-action="Login" method="post">
 		<input type="hidden" asp-for="ReturnUrl" />
@@ -14,11 +14,11 @@
 		</div>
 		<div>
 			<label asp-for="Password">Heslo</label>
-			<input asp-for="Password" class="form-control" />
+			<input type="password" asp-for="Password" class="form-control" />
 		</div>
 		<div class="my-2">
 			Zapamatovat přihlášení ?  <input type="checkbox" asp-for="Remember" />
 		</div>
-		<button class="btn btn-primary" type="submit">Přihlásit</button>
+		<button class="btn btn-sm btn-outline-success" type="submit">Přihlásit</button>
 	</form>
 </div>

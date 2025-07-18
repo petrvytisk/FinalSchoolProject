@@ -39,3 +39,44 @@ main {
     line-height: normal;
     margin-top: auto; // Udrží footer dole
 }
+
+.action-btn {
+    min-width: 5rem; /* nastaví minimální šířku tlačítek */
+}
+
+.success-action-btn {
+    min-width: 8rem; /* nastaví minimální šířku tlačítek */
+}
+
+.confirm-btn {
+    min-width: 6rem; /* nastaví minimální šířku tlačítek */
+}
+
+.custom-table-margin {
+    margin: 0px 0px 7px;
+}
+
+h1 {
+    font-size: 1.5rem; /* původně možná 2.5rem */
+    margin-bottom: 0.25rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+h4 {
+    font-size: 0.875rem;
+}
+
+h5 {
+    font-size: 0.75rem;
+}
+
+h6 {
+    font-size: 0.625rem;
+}

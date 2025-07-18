@@ -4,8 +4,8 @@
 	ViewData["Title"] = "CREATE USER";
 }
 <div class="container">
-	<h3>Vytvořit uživatele</h3>
-	<a asp-action="Index" class="btn btn-secondary">Zpět</a>
+	<h1>Vytvořit uživatele</h1>
+	<a asp-action="Index" class="btn btn-sm btn-secondary">Zpět</a>
 	<div asp-validation-summary="All" class="text-danger"></div>
 	<form method="post">
 		<div>
@@ -20,6 +20,6 @@
 			<label asp-for="Password">Heslo</label>
 			<input asp-for="Password" class="form-control" />
 		</div>
-		<button type="submit" class="btn btn-primary mt-2">Create</button>
+		<button type="submit" class="btn btn-sm btn-success confirm-btn mt-2">Vytvořit</button>
 	</form>
 </div>

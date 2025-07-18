@@ -3,8 +3,8 @@
 	ViewData["Title"] = "UPDATE ROLE";
 }
 <div class="container">
-	<h3>Upravit roli</h3>
-	<a asp-action="Index" class="btn btn-secondary">Back</a>
+	<h1>Upravit roli</h1>
+	<a asp-action="Index" class="btn btn-sm btn-secondary">Zpět</a>
 	<div asp-validation-summary="All" class="text-danger"></div>
 	<form method="post">
 		<input type="hidden" name="roleName" value="@Model.Role.Name" />
@@ -29,7 +29,7 @@
 			}
 		</table>
 		<h4 class="p-1">Remove From @Model.Role.Name</h4>
-		<table class="table table-bordered table-sm">
+		<table class="table table-bordered table-sm custom-table-margin">
 			@if (Model.Members.Count() == 0)
 			{
 				<tr><td colspan="2">No Users Are Members</td></tr>
@@ -47,6 +47,6 @@
 				}
 			}
 		</table>
-		<button type="submit" class="btn btn-primary">Save</button>
+		<button type="submit" class="btn btn-sm btn-warning confirm-btn mt-0">Uložit</button>
 	</form>
 </div>

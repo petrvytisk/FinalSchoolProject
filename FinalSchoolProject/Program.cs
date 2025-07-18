@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// ________________________ TOTO ZAKOMENTOVAT VE VERZI CO PUJDE NA WEB ________________________________________ - je to local db
 //builder.Services.AddDbContext<ApplicationDbContext>(options => {
 //    options.UseSqlServer(builder.Configuration["ConnectionStrings:OMSAppDbConnection"]);
 //});

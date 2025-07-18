@@ -1,7 +1,8 @@
 ﻿@using FinalSchoolProject.DTO
 @model OrderDTO
 <div class="container">
-	<h3>Nová objednávka</h3>
+	<h1>Upravit objednávku</h1>
+	<a asp-action="Index" class="btn btn-sm btn-secondary">Zpět</a>
 	<form asp-controller="Orders" asp-action="Edit">
 		<div asp-validation-summary="All" class="text-danger"></div>
 		<div class="row">
@@ -60,7 +61,7 @@
 		</div>
 
 		<div class="mt-2">
-			<input class="btn btn-primary" type="submit" value="Uložit změny" />
+			<input class="btn btn-sm btn-warning confirm-btn" type="submit" value="Uložit změny" />
 		</div>
 	</form>
 </div>

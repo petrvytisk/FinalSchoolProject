@@ -1,7 +1,8 @@
 ﻿@using FinalSchoolProject.ViewModels
 @model CustomerWithAddressVM;
 <div class="container">
-	<h3>Nový zákazník</h3>
+	<h1>Nový zákazník</h1>
+	<a asp-action="Index" class="btn btn-sm btn-secondary">Zpět</a>
 	<form asp-controller="Customers" asp-action="Create">
 		<div asp-validation-summary="All" class="text-danger"></div>
 		<div class="col">
@@ -70,7 +71,7 @@
 		</div>
 
 		<div class="mt-2">
-			<input class="btn btn-primary" type="submit" value="Uložit" />
+			<input class="btn btn-sm btn-success confirm-btn" type="submit" value="Uložit" />
 		</div>
 	</form>
 </div>

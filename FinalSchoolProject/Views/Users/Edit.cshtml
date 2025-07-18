@@ -5,8 +5,8 @@
 	ViewData["Title"] = "UPDATE USER";
 }
 <div class="container">
-	<h3>Upravit uživatele</h3>
-	<a asp-action="Index" class="btn btn-secondary">Zpět</a>
+	<h1>Upravit uživatele</h1>
+	<a asp-action="Index" class="btn btn-sm btn-secondary">Zpět</a>
 	<div asp-validation-summary="All" class="text-danger"></div>
 	<form asp-action="Edit" method="post">
 		<div>
@@ -25,6 +25,6 @@
 			<label for="password">Heslo</label>
 			<input name="password" class="form-control" />
 		</div>
-		<button type="submit" class="btn btn-primary mt-2">Uložit</button>
+		<button type="submit" class="btn btn-sm btn-warning confirm-btn mt-2">Uložit</button>
 	</form>
 </div>
